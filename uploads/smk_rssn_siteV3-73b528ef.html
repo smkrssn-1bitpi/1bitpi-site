@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMK RssN // Collaborative Engineering</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'miro-black': '#1c1c1e',
+                        'miro-blue': '#5b76fe',
+                        'miro-blue-pressed': '#2a41b6',
+                        'miro-success': '#00b473',
+                        'pastel-coral': '#ffc6c6',
+                        'pastel-teal': '#c3faf5',
+                        'pastel-orange': '#ffe6cd',
+                        'pastel-rose': '#ffd8f4',
+                        'miro-border': '#c7cad5'
+                    },
+                    fontFamily: {
+                        'display': ['Inter', 'sans-serif'],
+                        'body': ['Inter', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'monospace'],
+                        'retro': ['"Press Start 2P"', 'cursive']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; color: #1c1c1e; background-color: #fff; scroll-behavior: smooth; }
+        .hero-letter-spacing { letter-spacing: -1.68px; }
+        .miro-shadow { box-shadow: 0 0 0 1px rgb(224,226,232); }
+        .miro-card-shadow { box-shadow: 0 4px 12px rgba(0,0,0,0.03), 0 0 0 1px rgb(224,226,232); transition: all 0.3s ease; }
+        .miro-card-shadow:hover { box-shadow: 0 12px 24px rgba(0,0,0,0.08), 0 0 0 1px #5b76fe; }
+        
+        /* Pixel Art Styling */
+        .pixel-art { image-rendering: pixelated; width: 48px; height: 48px; }
+        
+        /* Terminal Blinking Cursor */
+        .cursor-blink::after {
+            content: '█';
+            animation: blink 1s step-start infinite;
+            color: #5b76fe;
+            margin-left: 4px;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* Animated Data Flow Lines */
+        .data-line {
+            stroke-dasharray: 12;
+            animation: flowData 1s linear infinite;
+            transition: stroke 0.3s ease, stroke-width 0.3s ease;
+        }
+        .data-line.active {
+            stroke: #5b76fe;
+            stroke-width: 4;
+            filter: drop-shadow(0 0 4px rgba(91, 118, 254, 0.5));
+        }
+        @keyframes flowData {
+            from { stroke-dashoffset: 24; }
+            to { stroke-dashoffset: 0; }
+        }
+
+        /* Node Pulse */
+        .node-pulse.active {
+            animation: pulse-ring 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            border-color: #5b76fe;
+        }
+        @keyframes pulse-ring {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body class="selection:bg-miro-blue selection:text-white">
+
+    <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-miro-border/50 h-20 flex items-center px-8 justify-between">
+        <div class="flex items-center gap-10">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-miro-blue rounded-md flex items-center justify-center text-white font-bold text-lg">S</div>
+                <span class="font-bold text-xl tracking-tighter">SMK RssN</span>
+            </div>
+            <div class="hidden lg:flex gap-6 font-medium text-[15px] text-zinc-600">
+                <a href="#agents" class="hover:text-miro-blue transition-colors">AI Agents</a>
+                <a href="#workflow" class="hover:text-miro-blue transition-colors">Automations</a>
+                <a href="#uiux" class="hover:text-miro-blue transition-colors">Web Apps</a>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <button class="bg-miro-blue text-white px-5 py-2.5 rounded-lg font-bold hover:bg-miro-blue-pressed transition-all">Initialize →</button>
+        </div>
+    </nav>
+
+    <section id="agents" class="pt-48 pb-24 px-6 overflow-hidden relative">
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <h1 class="text-[56px] md:text-[84px] font-black leading-[1.05] hero-letter-spacing mb-8 text-miro-black">
+                Where technical <br><span class="text-miro-blue italic">complexity</span> gets visual.
+            </h1>
+            <p class="text-[22px] text-zinc-500 max-w-2xl mx-auto mb-12 leading-relaxed">
+                A SMK RssN combina engenharia de ponta com design colaborativo para orquestrar agentes autônomos e automações massivas.
+            </p>
+        </div>
+
+        <div class="mt-12 max-w-5xl mx-auto relative group cursor-pointer">
+            <div class="bg-white miro-card-shadow rounded-[24px] p-1 overflow-hidden">
+                <div class="bg-zinc-50 border-b border-miro-border/30 p-4 flex items-center justify-between rounded-t-[23px]">
+                    <div class="flex gap-2">
+                        <div class="w-3 h-3 rounded-full bg-[#ff5f57]"></div>
+                        <div class="w-3 h-3 rounded-full bg-[#febc2e]"></div>
+                        <div class="w-3 h-3 rounded-full bg-[#28c840]"></div>
+                    </div>
+                    <div class="text-[12px] mono text-zinc-400 font-bold uppercase tracking-widest">Pitter_Autonomous_Core.sh</div>
+                    <div class="w-10"></div>
+                </div>
+                <div class="p-10 flex flex-col md:flex-row gap-10">
+                    <div class="flex-1">
+                        <div class="mb-6 flex items-center gap-4">
+                            <div class="p-3 bg-miro-black rounded-xl">
+                                <svg class="pixel-art" viewBox="0 0 24 24" fill="#5b76fe">
+                                    <path d="M6 2h12v2H6V2zm14 2h2v4h-2V4zM4 4h2v4H4V4zm-2 4h2v8H2V8zm20 0h2v8h-2V8zM4 16h2v4H4v-4zm14 0h2v4h-2v-4zm-12 4h12v2H6v-2zM8 8h2v2H8V8zm6 0h2v2h-2V8zM8 12h8v2H8v-2z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl font-retro text-[14px]">Agent_Nexus</h4>
+                                <p class="text-miro-success text-xs mono font-bold uppercase mt-1">Status: Online</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mono text-[13px] text-zinc-600 bg-zinc-50 p-6 rounded-xl border border-miro-border/40 h-48 overflow-y-auto" id="terminal-screen">
+                            </div>
+                    </div>
+                    
+                    <div class="w-full md:w-64 flex flex-col gap-4">
+                        <div class="p-4 bg-pastel-teal rounded-xl miro-shadow">
+                            <span class="text-[10px] font-bold uppercase text-[#187574]">Hardware Node: Sentinel</span>
+                            <div class="mt-2 h-2 bg-white/50 rounded-full overflow-hidden">
+                                <div class="w-[85%] h-full bg-[#187574] animate-pulse"></div>
+                            </div>
+                            <span class="text-[9px] text-[#187574] mt-1 block">Energy: Microbial Source Optimal</span>
+                        </div>
+                        <div class="p-4 bg-pastel-orange rounded-xl miro-shadow">
+                            <span class="text-[10px] font-bold uppercase text-[#746019]">LLM Context Window</span>
+                            <div class="mt-2 text-xl font-black text-[#746019]" id="token-counter">32,450</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="workflow" class="py-32 bg-[#f9f9f9] border-y border-miro-border/40">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <span class="text-miro-blue font-bold uppercase tracking-widest text-xs">Architectural Blueprint</span>
+                <h2 class="text-5xl font-black mt-4 hero-letter-spacing">Live Data Pipelines</h2>
+                <p class="mt-4 text-zinc-500">Clique no gatilho para simular a orquestração em tempo real.</p>
+            </div>
+
+            <div class="relative h-[400px] flex items-center justify-center">
+                <svg class="absolute inset-0 w-full h-full pointer-events-none z-0">
+                    <path id="path1" d="M 250 200 Q 500 100 750 200" stroke="#c7cad5" stroke-width="2" fill="none" class="data-line" />
+                    <path id="path2" d="M 750 200 Q 850 300 950 200" stroke="#c7cad5" stroke-width="2" fill="none" class="data-line" />
+                </svg>
+
+                <div class="absolute left-[10%] md:left-[20%] p-6 bg-white border-2 border-zinc-200 rounded-2xl shadow-lg z-10 text-center transition-all">
+                    <button id="btn-trigger" class="px-4 py-2 bg-miro-blue text-white rounded-lg font-bold text-sm hover:scale-105 active:scale-95 transition-transform">
+                        ▶ Trigger Flow
+                    </button>
+                    <p class="text-[10px] text-zinc-400 mt-3 font-mono">External API Webhook</p>
+                </div>
+
+                <div id="node-engine" class="absolute left-[50%] -translate-x-1/2 p-8 bg-white border-4 border-zinc-200 rounded-[32px] shadow-xl z-10 text-center transition-all">
+                    <div class="text-3xl mb-2">⚙️</div>
+                    <h5 class="font-black text-xl">SMK Orchestrator</h5>
+                    <p id="engine-status" class="text-zinc-400 font-bold mono text-[10px] uppercase mt-2">Awaiting Input...</p>
+                </div>
+
+                <div id="node-output" class="absolute right-[10%] md:right-[20%] p-6 bg-white border-2 border-zinc-200 rounded-2xl shadow-lg z-10 text-center transition-all opacity-50">
+                    <div class="w-10 h-10 bg-pastel-teal rounded-lg mx-auto mb-2 flex items-center justify-center text-xl">✅</div>
+                    <h5 class="font-bold text-sm">Action Executed</h5>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="uiux" class="py-32 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-black hero-letter-spacing mb-12">State Management & UX</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+                <div class="md:col-span-5 bg-miro-black rounded-[32px] p-8 text-white flex flex-col justify-between shadow-2xl">
+                    <div class="flex justify-between items-start mb-10">
+                        <div class="w-12 h-12 bg-miro-blue rounded-xl flex items-center justify-center">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+                        </div>
+                        <span class="text-miro-success font-mono font-bold text-[10px] tracking-widest border border-miro-success/30 px-2 py-1 rounded">MOUNTED</span>
+                    </div>
+                    <div>
+                        <h4 class="text-2xl font-bold mb-2">Interactive States</h4>
+                        <p class="text-zinc-400 text-sm mb-6">Test the data binding below. The state propagates to the adjacent component instantly.</p>
+                        <button id="btn-mutate" class="w-full bg-white text-miro-black font-bold py-3 rounded-lg hover:bg-zinc-200 active:scale-[0.98] transition-transform flex items-center justify-center gap-2">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"></path><path d="M16 21v-5h5"></path></svg>
+                            Mutate Data Load
+                        </button>
+                    </div>
+                </div>
+
+                <div class="md:col-span-7 bg-white border border-miro-border rounded-[32px] p-8 miro-card-shadow flex flex-col justify-between">
+                    <h5 class="font-bold text-lg flex items-center justify-between mb-8">
+                        System Load Metrics
+                        <span id="metric-badge" class="px-2 py-1 bg-zinc-100 text-[10px] font-mono rounded transition-colors">IDLE</span>
+                    </h5>
+                    
+                    <div class="flex items-end gap-2 h-48 w-full" id="chart-container">
+                        <div class="w-full bg-pastel-coral h-[30%] rounded-t-md transition-all duration-500 ease-out metric-bar"></div>
+                        <div class="w-full bg-pastel-orange h-[50%] rounded-t-md transition-all duration-500 ease-out metric-bar"></div>
+                        <div class="w-full bg-miro-blue h-[80%] rounded-t-md transition-all duration-500 ease-out metric-bar"></div>
+                        <div class="w-full bg-pastel-teal h-[20%] rounded-t-md transition-all duration-500 ease-out metric-bar"></div>
+                        <div class="w-full bg-zinc-200 h-[60%] rounded-t-md transition-all duration-500 ease-out metric-bar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-miro-border/50 bg-zinc-50">
+        <div class="max-w-6xl mx-auto px-6 text-center text-zinc-400 text-xs font-medium">
+            © 2024 SMK RssN. Engineered for autonomy.
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // 1. Lógica do Terminal Autônomo (Hero Section)
+            const terminalScreen = document.getElementById('terminal-screen');
+            const logs = [
+                "> Initializing Pitter Autonomous Core...",
+                "> Connecting to local LLM orchestrator...",
+                "> Bootstrapping Sentinel edge nodes [OK]",
+                "> Calibrating microbial energy sensors...",
+                "> Compiling UI assets via Model Context Protocol...",
+                "> System Ready. Awaiting user command."
+            ];
+            
+            let logIndex = 0;
+            const typeWriter = () => {
+                if(logIndex < logs.length) {
+                    const line = document.createElement('div');
+                    line.className = "flex gap-2 mb-2 opacity-0 transition-opacity duration-300";
+                    line.innerHTML = `<span class="text-miro-blue">~</span> <span class="cursor-blink">${logs[logIndex]}</span>`;
+                    terminalScreen.appendChild(line);
+                    
+                    // Trigger reflow to start fade in
+                    setTimeout(() => line.classList.remove('opacity-0'), 50);
+                    
+                    // Remove blink from previous line
+                    if(terminalScreen.children.length > 1) {
+                        const prevLineSpan = terminalScreen.children[terminalScreen.children.length - 2].querySelector('.cursor-blink');
+                        if(prevLineSpan) prevLineSpan.classList.remove('cursor-blink');
+                    }
+
+                    terminalScreen.scrollTop = terminalScreen.scrollHeight;
+                    logIndex++;
+                    setTimeout(typeWriter, Math.random() * 800 + 400); // tempo aleatório de digitação
+                }
+            };
+            setTimeout(typeWriter, 1000);
+
+
+            // 2. Lógica do Workflow (Seção do Meio)
+            const btnTrigger = document.getElementById('btn-trigger');
+            const path1 = document.getElementById('path1');
+            const path2 = document.getElementById('path2');
+            const nodeEngine = document.getElementById('node-engine');
+            const nodeOutput = document.getElementById('node-output');
+            const engineStatus = document.getElementById('engine-status');
+
+            btnTrigger.addEventListener('click', () => {
+                // Anima primeira linha
+                path1.classList.add('active');
+                btnTrigger.innerText = "Processing...";
+                
+                setTimeout(() => {
+                    // Acende o motor
+                    path1.classList.remove('active');
+                    nodeEngine.classList.add('node-pulse');
+                    nodeEngine.style.borderColor = '#5b76fe';
+                    engineStatus.innerText = "Transforming Data...";
+                    engineStatus.classList.add('text-miro-blue');
+
+                    setTimeout(() => {
+                        // Anima segunda linha e acende o output
+                        nodeEngine.classList.remove('node-pulse');
+                        nodeEngine.style.borderColor = '';
+                        engineStatus.innerText = "Awaiting Input...";
+                        engineStatus.classList.remove('text-miro-blue');
+
+                        path2.classList.add('active');
+                        
+                        setTimeout(() => {
+                            path2.classList.remove('active');
+                            nodeOutput.classList.remove('opacity-50');
+                            nodeOutput.style.borderColor = '#00b473'; // success
+                            
+                            setTimeout(() => {
+                                btnTrigger.innerText = "▶ Trigger Flow";
+                                nodeOutput.classList.add('opacity-50');
+                                nodeOutput.style.borderColor = '';
+                            }, 1500);
+
+                        }, 800);
+                    }, 1200);
+                }, 800);
+            });
+
+            // 3. Lógica de Mutação de Estado (Bento Grid)
+            const btnMutate = document.getElementById('btn-mutate');
+            const metricBars = document.querySelectorAll('.metric-bar');
+            const metricBadge = document.getElementById('metric-badge');
+
+            btnMutate.addEventListener('click', () => {
+                // Muda a cor do badge para mostrar atividade
+                metricBadge.innerText = "UPDATING...";
+                metricBadge.className = "px-2 py-1 bg-miro-blue text-white text-[10px] font-mono rounded transition-colors";
+
+                // Gera alturas aleatórias para as barras
+                metricBars.forEach(bar => {
+                    const randomHeight = Math.floor(Math.random() * 85) + 15; // entre 15% e 100%
+                    bar.style.height = `${randomHeight}%`;
+                    
+                    // Efeito de brilho temporário
+                    const originalColor = bar.className;
+                    bar.classList.add('bg-miro-blue');
+                    bar.style.filter = "brightness(1.2)";
+                    
+                    setTimeout(() => {
+                        bar.classList.remove('bg-miro-blue');
+                        bar.style.filter = "";
+                    }, 400);
+                });
+
+                // Retorna o badge ao normal
+                setTimeout(() => {
+                    metricBadge.innerText = "REAL-TIME";
+                    metricBadge.className = "px-2 py-1 bg-zinc-100 text-zinc-600 text-[10px] font-mono rounded transition-colors";
+                }, 600);
+            });
+        });
+    </script>
+</body>
+</html>
