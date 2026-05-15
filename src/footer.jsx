@@ -71,8 +71,8 @@ function Footer() {
             <div className="text-[11px] font-mono uppercase tracking-widest text-zinc-400 mb-3">Contato</div>
             <ul className="space-y-2 text-[14px] text-zinc-600">
               <li>
-                <a href="mailto:hello@1bitpi.com" className="hover:text-tide transition-colors no-underline">
-                  hello@1bitpi.com
+                <a href="mailto:caue.antonacci@1bitpi.com.br" className="hover:text-tide transition-colors no-underline">
+                  caue.antonacci@1bitpi.com.br
                 </a>
               </li>
               <li>
