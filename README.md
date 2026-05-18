@@ -53,7 +53,7 @@ Para GitHub Pages: faça push deste repositório e ative Pages em Settings → P
 
 - Formulário: Formspree (`https://formspree.io/f/xzdojlez`) → entrega em `smkrssn@gmail.com`
 - WhatsApp: `(11) 97229-4623`
-- Email: `hello@1bitpi.com`
+- Email: `caue.antonacci@1bitpi.com.br`
 
 ## Fundador
 
