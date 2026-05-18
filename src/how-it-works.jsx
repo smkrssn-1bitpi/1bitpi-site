@@ -1,4 +1,4 @@
-const { motion: hiwMotion } = window.framerMotion || window.Motion || window.FramerMotion;
+import { motion as hiwMotion } from 'framer-motion';
 
 const PHASES = [
   {
@@ -35,7 +35,7 @@ const PHASES = [
   },
 ];
 
-function HowItWorks() {
+export function HowItWorks() {
   return (
     <section id="como-funciona" className="relative py-24 md:py-32 px-6">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-zinc-300/60 to-transparent" />
@@ -105,5 +105,3 @@ function HowItWorks() {
     </section>
   );
 }
-
-window.HowItWorks = HowItWorks;

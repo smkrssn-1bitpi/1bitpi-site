@@ -1,4 +1,4 @@
-const { motion: svcMotion } = window.framerMotion || window.Motion || window.FramerMotion;
+import { motion as svcMotion } from 'framer-motion';
 
 const SCOPE_INCLUDES = [
   'Design de arquitetura',
@@ -30,7 +30,7 @@ function XIcon() {
   );
 }
 
-function SprintOffer() {
+export function SprintOffer() {
   return (
     <section id="a-oferta" className="relative py-24 md:py-32 px-6">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-zinc-300/60 to-transparent" />
@@ -160,5 +160,3 @@ function SprintOffer() {
     </section>
   );
 }
-
-window.SprintOffer = SprintOffer;

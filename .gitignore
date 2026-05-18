@@ -3,3 +3,6 @@
 
 # Arquivos de referência de desenvolvimento
 uploads/
+
+# Dependências de build (não commitar)
+node_modules/

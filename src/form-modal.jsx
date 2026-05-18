@@ -1,6 +1,6 @@
-const { motion: fmMotion, AnimatePresence: FMPresence } = window.framerMotion || window.Motion || window.FramerMotion;
+import { useState, useEffect } from 'react';
+import { motion as fmMotion, AnimatePresence as FMPresence } from 'framer-motion';
 
-// Substitua pela URL do seu formulário no Formspree (formspree.io)
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xzdojlez';
 
 const PROJECT_TYPES = [
@@ -47,14 +47,14 @@ function SuccessScreen({ onClose }) {
   );
 }
 
-function QuoteModal({ isOpen, onClose }) {
-  const [form, setForm] = React.useState({
+export function QuoteModal({ isOpen, onClose }) {
+  const [form, setForm] = useState({
     name: '', email: '', whatsapp: '', company: '',
     projectType: '', description: '', source: '',
   });
-  const [status, setStatus] = React.useState('idle'); // idle | sending | success | error
+  const [status, setStatus] = useState('idle');
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!isOpen) return;
     const onKey = (e) => { if (e.key === 'Escape') onClose(); };
     document.addEventListener('keydown', onKey);
@@ -118,7 +118,6 @@ function QuoteModal({ isOpen, onClose }) {
               <SuccessScreen onClose={handleClose} />
             ) : (
               <>
-                {/* Header */}
                 <div className="flex items-start justify-between px-8 pt-8 pb-2">
                   <div>
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-tide/10 border border-tide/20 text-[11px] font-bold tracking-widest uppercase text-tide mb-3">
@@ -142,7 +141,6 @@ function QuoteModal({ isOpen, onClose }) {
                   </button>
                 </div>
 
-                {/* Form */}
                 <form onSubmit={handleSubmit} className="px-8 pb-8 pt-5 space-y-4">
                   <Field label="Nome completo" required>
                     <input name="name" type="text" value={form.name} onChange={handleChange} required placeholder="Seu nome" className={INPUT_CLASS} />
@@ -226,5 +224,3 @@ function QuoteModal({ isOpen, onClose }) {
     </FMPresence>
   );
 }
-
-window.QuoteModal = QuoteModal;

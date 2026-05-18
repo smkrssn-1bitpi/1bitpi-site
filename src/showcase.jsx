@@ -1,6 +1,5 @@
-const { motion: scMotion, AnimatePresence: ScAP } = window.framerMotion || window.Motion || window.FramerMotion;
-
-// ── Device mockups ────────────────────────────────────────────────────────────
+import { useState } from 'react';
+import { motion as scMotion, AnimatePresence as ScAP } from 'framer-motion';
 
 function BrowserMockup({ type }) {
   if (type === 'site') {
@@ -69,24 +68,20 @@ function PhoneMockup() {
   return (
     <div className="relative mx-auto w-[120px]">
       <div className="rounded-[24px] border-2 border-white/20 bg-gradient-to-b from-deep-ocean to-abyss overflow-hidden shadow-2xl">
-        {/* Status bar */}
         <div className="flex items-center justify-between px-3 pt-2 pb-1">
           <span className="text-[7px] text-white/60 font-mono">9:41</span>
           <div className="flex gap-0.5 items-center">
             <div className="w-3 h-1.5 rounded-sm bg-foam/60"></div>
           </div>
         </div>
-        {/* App header */}
         <div className="px-3 pt-1 pb-2 border-b border-white/5">
           <div className="text-[10px] font-bold text-sand">Sua Empresa</div>
           <div className="text-[8px] text-tide mt-0.5">App Mobile</div>
         </div>
-        {/* Banner offer */}
         <div className="mx-2 mt-2 rounded-xl bg-gradient-to-r from-tide to-foam p-2">
           <div className="text-[8px] text-deep-ocean font-bold leading-tight">Promoção do<br/>Fim de Semana</div>
           <div className="mt-1 text-[7px] bg-deep-ocean text-sand rounded px-1.5 py-0.5 inline-block">Ver oferta</div>
         </div>
-        {/* Actions */}
         <div className="px-2 pt-2 space-y-1.5 pb-3">
           {['Reservar', 'Cardápio', 'Fidelidade'].map(a => (
             <div key={a} className="flex items-center gap-1.5 py-1.5 px-2 rounded-lg bg-white/5 border border-white/5">
@@ -95,7 +90,6 @@ function PhoneMockup() {
             </div>
           ))}
         </div>
-        {/* Bottom bar */}
         <div className="flex justify-around py-2 border-t border-white/5">
           {[...Array(4)].map((_, i) => (
             <div key={i} className={`w-4 h-4 rounded-md ${i === 0 ? 'bg-tide/40' : 'bg-white/10'}`}></div>
@@ -105,8 +99,6 @@ function PhoneMockup() {
     </div>
   );
 }
-
-// ── Tab content ───────────────────────────────────────────────────────────────
 
 const TABS = [
   {
@@ -180,10 +172,8 @@ const SERVICE_CARDS = [
   },
 ];
 
-// ── Component ─────────────────────────────────────────────────────────────────
-
-function Showcase() {
-  const [active, setActive] = React.useState('webapp');
+export function Showcase() {
+  const [active, setActive] = useState('webapp');
   const tab = TABS.find(t => t.id === active);
 
   return (
@@ -191,7 +181,6 @@ function Showcase() {
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-zinc-300/60 to-transparent" />
       <div className="max-w-6xl mx-auto">
 
-        {/* Header */}
         <scMotion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -210,7 +199,6 @@ function Showcase() {
           </p>
         </scMotion.div>
 
-        {/* Main showcase card */}
         <scMotion.div
           initial={{ opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
@@ -219,9 +207,7 @@ function Showcase() {
         >
           <div className="p-8 md:p-10 grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-8 items-center">
 
-            {/* Left: content */}
             <div>
-              {/* Chip + live */}
               <div className="flex items-center gap-3 mb-6">
                 <span className={`text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border ${tab.chipColor}`}>
                   {tab.chip}
@@ -235,7 +221,6 @@ function Showcase() {
                 </div>
               </div>
 
-              {/* Title */}
               <ScAP mode="wait">
                 <scMotion.h3
                   key={active + '-title'}
@@ -249,7 +234,6 @@ function Showcase() {
                 </scMotion.h3>
               </ScAP>
 
-              {/* Body */}
               <ScAP mode="wait">
                 <scMotion.p
                   key={active + '-body'}
@@ -263,7 +247,6 @@ function Showcase() {
                 </scMotion.p>
               </ScAP>
 
-              {/* Features */}
               <ScAP mode="wait">
                 <scMotion.ul
                   key={active + '-features'}
@@ -284,7 +267,6 @@ function Showcase() {
                 </scMotion.ul>
               </ScAP>
 
-              {/* Tab switcher */}
               <div className="flex gap-1 p-1 rounded-xl bg-white/5 border border-white/5 w-fit">
                 {TABS.map(t => (
                   <button
@@ -302,7 +284,6 @@ function Showcase() {
               </div>
             </div>
 
-            {/* Right: mockup */}
             <ScAP mode="wait">
               <scMotion.div
                 key={active + '-mockup'}
@@ -322,7 +303,6 @@ function Showcase() {
           </div>
         </scMotion.div>
 
-        {/* Service description cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {SERVICE_CARDS.map((card, i) => (
             <scMotion.button
@@ -353,5 +333,3 @@ function Showcase() {
     </section>
   );
 }
-
-window.Showcase = Showcase;

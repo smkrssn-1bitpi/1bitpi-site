@@ -1,4 +1,4 @@
-const { motion: cfMotion } = window.framerMotion || window.Motion || window.FramerMotion;
+import { motion as cfMotion } from 'framer-motion';
 
 const FOR = [
   'Empresas que precisam de site institucional ou presença digital',
@@ -14,7 +14,7 @@ const NOT_FOR = [
   'Projetos que já têm time de desenvolvimento interno',
 ];
 
-function ClientFilter() {
+export function ClientFilter() {
   return (
     <section id="para-quem" className="relative py-24 md:py-32 px-6">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-zinc-300/60 to-transparent" />
@@ -123,5 +123,3 @@ function ClientFilter() {
     </section>
   );
 }
-
-window.ClientFilter = ClientFilter;

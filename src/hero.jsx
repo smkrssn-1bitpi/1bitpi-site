@@ -1,8 +1,8 @@
-const { motion: heroMotion } = window.framerMotion || window.Motion || window.FramerMotion;
+import { motion as heroMotion } from 'framer-motion';
 
 const TRUST_CHIPS = ['Site Institucional', 'Website', 'Webapp', 'App Mobile'];
 
-function Hero() {
+export function Hero() {
   return (
     <section id="hero" className="relative pt-36 md:pt-44 pb-24 px-6">
       <div className="max-w-4xl mx-auto text-center relative">
@@ -82,5 +82,3 @@ function Hero() {
     </section>
   );
 }
-
-window.Hero = Hero;

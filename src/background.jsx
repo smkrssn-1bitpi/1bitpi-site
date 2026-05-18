@@ -1,12 +1,11 @@
-// Interactive background — mouse-reactive gradient orbs + floating particle network
-const { motion, useMotionValue, useSpring, useTransform } = window.framerMotion || window.Motion || window.FramerMotion;
+import { useRef, useEffect } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
-function InteractiveBackground() {
-  const canvasRef = React.useRef(null);
-  const mouseRef = React.useRef({ x: 0.5, y: 0.3 });
-  const rafRef = React.useRef(0);
+export function InteractiveBackground() {
+  const canvasRef = useRef(null);
+  const mouseRef = useRef({ x: 0.5, y: 0.3 });
+  const rafRef = useRef(0);
 
-  // Smooth motion values for orbs
   const mx = useMotionValue(0.5);
   const my = useMotionValue(0.3);
   const sx = useSpring(mx, { stiffness: 40, damping: 20, mass: 0.8 });
@@ -19,7 +18,7 @@ function InteractiveBackground() {
   const orb3X = useTransform(sx, v => `${v * 30 + 30}%`);
   const orb3Y = useTransform(sy, v => `${v * 50 + 30}%`);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const onMove = (e) => {
       const x = e.clientX / window.innerWidth;
       const y = e.clientY / window.innerHeight;
@@ -31,8 +30,7 @@ function InteractiveBackground() {
     return () => window.removeEventListener('mousemove', onMove);
   }, [mx, my]);
 
-  // Particle canvas — floating nodes with connective lines that react to cursor
-  React.useEffect(() => {
+  useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -64,7 +62,6 @@ function InteractiveBackground() {
       ctx.clearRect(0, 0, w, h);
       const mouse = { x: mouseRef.current.x * w, y: mouseRef.current.y * h };
 
-      // Update + draw dots
       for (const p of particles) {
         p.x += p.vx;
         p.y += p.vy;
@@ -87,7 +84,6 @@ function InteractiveBackground() {
         ctx.fill();
       }
 
-      // Connect lines
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const a = particles[i], b = particles[j];
@@ -103,7 +99,6 @@ function InteractiveBackground() {
             ctx.stroke();
           }
         }
-        // connect to mouse
         const dxm = particles[i].x - mouse.x;
         const dym = particles[i].y - mouse.y;
         const dm = Math.hypot(dxm, dym);
@@ -130,7 +125,6 @@ function InteractiveBackground() {
 
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-      {/* Base gradient wash — sky to sand to seafoam */}
       <div
         className="absolute inset-0"
         style={{
@@ -138,7 +132,6 @@ function InteractiveBackground() {
             'linear-gradient(180deg, #fef8ed 0%, #fff5e8 25%, #f5f0e3 55%, #e8f4f2 100%)',
         }}
       />
-      {/* Wave horizon band */}
       <div
         className="absolute inset-x-0"
         style={{
@@ -148,7 +141,6 @@ function InteractiveBackground() {
             'linear-gradient(180deg, rgba(94,234,212,0) 0%, rgba(94,234,212,0.08) 40%, rgba(8,145,166,0.12) 100%)',
         }}
       />
-      {/* Mouse-reactive gradient orbs */}
       <motion.div
         key="orb-1"
         className="absolute w-[60vw] h-[60vw] rounded-full blur-3xl opacity-60"
@@ -185,14 +177,9 @@ function InteractiveBackground() {
             'radial-gradient(circle, rgba(94,234,212,0.55) 0%, rgba(94,234,212,0) 60%)',
         }}
       />
-      {/* Particle network */}
       <canvas ref={canvasRef} className="absolute inset-0" />
-      {/* Noise overlay */}
       <div className="absolute inset-0 noise opacity-[0.22] mix-blend-overlay" />
-      {/* Vignette */}
       <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, transparent 35%, rgba(254,248,237,0.55) 100%)' }} />
     </div>
   );
 }
-
-window.InteractiveBackground = InteractiveBackground;

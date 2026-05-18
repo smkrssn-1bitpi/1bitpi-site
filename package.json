@@ -1,0 +1,17 @@
+{
+  "name": "1bitpi-site",
+  "private": true,
+  "scripts": {
+    "build": "tailwindcss -i src/input.css -o styles.css --minify && esbuild src/entry.jsx --bundle --minify --outfile=bundle.js --platform=browser --define:process.env.NODE_ENV='\"production\"' --jsx=automatic",
+    "build:dev": "tailwindcss -i src/input.css -o styles.css && esbuild src/entry.jsx --bundle --outfile=bundle.js --platform=browser --define:process.env.NODE_ENV='\"development\"' --jsx=automatic"
+  },
+  "dependencies": {
+    "framer-motion": "^11.11.17",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.21.5",
+    "tailwindcss": "^3.4.4"
+  }
+}

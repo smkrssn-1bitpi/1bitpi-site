@@ -1,4 +1,4 @@
-function Footer() {
+export function Footer() {
   return (
     <footer id="booking" className="relative border-t border-zinc-200/60 py-20 px-6 mt-10">
       <div className="max-w-6xl mx-auto">
@@ -96,5 +96,3 @@ function Footer() {
     </footer>
   );
 }
-
-window.Footer = Footer;

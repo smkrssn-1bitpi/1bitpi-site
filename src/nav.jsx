@@ -1,8 +1,9 @@
-const { motion: navMotion } = window.framerMotion || window.Motion || window.FramerMotion;
+import { useState, useEffect } from 'react';
+import { motion as navMotion } from 'framer-motion';
 
-function Nav() {
-  const [scrolled, setScrolled] = React.useState(false);
-  React.useEffect(() => {
+export function Nav() {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -59,5 +60,3 @@ function Nav() {
     </navMotion.nav>
   );
 }
-
-window.Nav = Nav;
